@@ -8,16 +8,14 @@ import java.util.List;
 /**
  * Created by Administrator on 2017-6-30.
  */
-public class User {
+public class Resource {
     private Long id;
-    private String userName;
-    private String password;
-    private String email;
-    private String mobile;
-    private String status;
-    private String lastLoginIp;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date lastLoginTime;
+    private String name;
+    private String icon;
+    private String url;
+    private Long parentId;
+    private List<Resource> resources;
+    private String description;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
     private Long createId;
@@ -26,8 +24,6 @@ public class User {
     private Date updateTime;
     private Long updateId;
     private User updateUser;
-    private List<Role> roles;
-
 
     public Long getId() {
         return id;
@@ -37,60 +33,52 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getPassword() {
-        return password;
+    public String getIcon() {
+        return icon;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUrl() {
+        return url;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
-    public String getMobile() {
-        return mobile;
+    public Long getParentId() {
+        return parentId;
     }
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
     }
 
-    public String getStatus() {
-        return status;
+    public List<Resource> getResources() {
+        return resources;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setResources(List<Resource> resources) {
+        this.resources = resources;
     }
 
-    public String getLastLoginIp() {
-        return lastLoginIp;
+    public String getDescription() {
+        return description;
     }
 
-    public void setLastLoginIp(String lastLoginIp) {
-        this.lastLoginIp = lastLoginIp;
-    }
-
-    public Date getLastLoginTime() {
-        return lastLoginTime;
-    }
-
-    public void setLastLoginTime(Date lastLoginTime) {
-        this.lastLoginTime = lastLoginTime;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Date getCreateTime() {
@@ -139,13 +127,5 @@ public class User {
 
     public void setUpdateUser(User updateUser) {
         this.updateUser = updateUser;
-    }
-
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
     }
 }

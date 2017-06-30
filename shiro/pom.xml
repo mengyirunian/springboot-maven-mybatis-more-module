@@ -5,13 +5,11 @@
     <parent>
         <artifactId>framework-server</artifactId>
         <groupId>com.zpz</groupId>
-
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>controller</artifactId>
-
+    <artifactId>shiro</artifactId>
     <dependencies>
         <dependency>
             <groupId>com.zpz</groupId>
@@ -23,10 +21,6 @@
             <artifactId>model</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>com.zpz</groupId>
-            <artifactId>shiro</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
     </dependencies>
+
 </project>

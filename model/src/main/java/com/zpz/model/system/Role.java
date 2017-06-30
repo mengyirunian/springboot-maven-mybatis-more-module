@@ -6,18 +6,12 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by Administrator on 2017-6-30.
+ *
  */
-public class User {
+public class Role {
     private Long id;
-    private String userName;
-    private String password;
-    private String email;
-    private String mobile;
-    private String status;
-    private String lastLoginIp;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date lastLoginTime;
+    private String name;
+    private String description;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
     private Long createId;
@@ -26,8 +20,7 @@ public class User {
     private Date updateTime;
     private Long updateId;
     private User updateUser;
-    private List<Role> roles;
-
+    private List<Resource> resources;
 
     public Long getId() {
         return id;
@@ -37,60 +30,20 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getPassword() {
-        return password;
+    public String getDescription() {
+        return description;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getLastLoginIp() {
-        return lastLoginIp;
-    }
-
-    public void setLastLoginIp(String lastLoginIp) {
-        this.lastLoginIp = lastLoginIp;
-    }
-
-    public Date getLastLoginTime() {
-        return lastLoginTime;
-    }
-
-    public void setLastLoginTime(Date lastLoginTime) {
-        this.lastLoginTime = lastLoginTime;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Date getCreateTime() {
@@ -141,11 +94,11 @@ public class User {
         this.updateUser = updateUser;
     }
 
-    public List<Role> getRoles() {
-        return roles;
+    public List<Resource> getResources() {
+        return resources;
     }
 
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
+    public void setResources(List<Resource> resources) {
+        this.resources = resources;
     }
 }

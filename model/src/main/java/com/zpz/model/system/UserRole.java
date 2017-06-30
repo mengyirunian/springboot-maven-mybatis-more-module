@@ -3,21 +3,16 @@ package com.zpz.model.system;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Administrator on 2017-6-30.
  */
-public class User {
+public class UserRole {
     private Long id;
-    private String userName;
-    private String password;
-    private String email;
-    private String mobile;
-    private String status;
-    private String lastLoginIp;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date lastLoginTime;
+    private Long userId;
+    private User roleUser;
+    private Long roleId;
+    private Role roleRole;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
     private Long createId;
@@ -26,8 +21,6 @@ public class User {
     private Date updateTime;
     private Long updateId;
     private User updateUser;
-    private List<Role> roles;
-
 
     public Long getId() {
         return id;
@@ -37,60 +30,36 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
-    public String getPassword() {
-        return password;
+    public User getRoleUser() {
+        return roleUser;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setRoleUser(User roleUser) {
+        this.roleUser = roleUser;
     }
 
-    public String getEmail() {
-        return email;
+    public Long getRoleId() {
+        return roleId;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
     }
 
-    public String getMobile() {
-        return mobile;
+    public Role getRoleRole() {
+        return roleRole;
     }
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getLastLoginIp() {
-        return lastLoginIp;
-    }
-
-    public void setLastLoginIp(String lastLoginIp) {
-        this.lastLoginIp = lastLoginIp;
-    }
-
-    public Date getLastLoginTime() {
-        return lastLoginTime;
-    }
-
-    public void setLastLoginTime(Date lastLoginTime) {
-        this.lastLoginTime = lastLoginTime;
+    public void setRoleRole(Role roleRole) {
+        this.roleRole = roleRole;
     }
 
     public Date getCreateTime() {
@@ -139,13 +108,5 @@ public class User {
 
     public void setUpdateUser(User updateUser) {
         this.updateUser = updateUser;
-    }
-
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
     }
 }

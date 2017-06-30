@@ -1,25 +1,78 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- 指定工作空间，要与接口名相同，源代码没有去看，猜测应该是通过"这里的namespace.下边方法的id"来定位方法的 -->
 <mapper namespace="com.zpz.mapper.system.UserMapper">
 
-    <!-- 若不需要自动返回主键，将useGeneratedKeys="true" keyProperty="id"去掉即可(当然如果不需要自动返回主键，直接用注解即可) -->
-    <insert id="insertUserWithBackId" parameterType="User" useGeneratedKeys="true" keyProperty="id" >
+    <resultMap type="com.zpz.model.system.User" id="bookMap">
+        <id property="id" column="id"/>
+        <result property="userName" column="user_name"/>
+        <result property="password" column="password"/>
+        <result property="email" column="email"/>
+        <result property="mobile" column="mobile"/>
+        <result property="status" column="status"/>
+        <result property="lastLoginIp" column="last_login_ip"/>
+        <result property="lastLoginTime" column="last_login_time"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createId" column="create_id"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateId" column="update_id"/>
+        <collection property="roles" ofType="com.zpz.model.system.Role">
+            <id property="id" column="rid"/>
+            <result property="name" column="rname"/>
+            <result property="description" column="rdescription"/>
+            <result property="createTime" column="rcreate_time"/>
+            <result property="createId" column="rcreate_id"/>
+            <result property="updateTime" column="rupdate_time"/>
+            <result property="updateId" column="rupdate_id"/>
+            <collection property="resources" ofType="com.zpz.model.system.Resource">
+                <id property="id" column="reid"/>
+                <result property="name" column="rename"/>
+                <result property="icon" column="reicon"/>
+                <result property="url" column="reurl"/>
+                <result property="parentId" column="reparent_id"/>
+                <result property="description" column="redescription"/>
+                <result property="createTime" column="recreate_time"/>
+                <result property="createId" column="recreate_id"/>
+                <result property="updateTime" column="reupdate_time"/>
+                <result property="updateId" column="reupdate_id"/>
+            </collection>
+        </collection>
+
+    </resultMap>
+
+    <select id="selectUser" parameterType="com.zpz.model.system.User" resultMap="bookMap">
         <![CDATA[
-       INSERT INTO user
-       (
-           username,
-           password,
-           enable
-       )
-       VALUES
-       (
-           #{username},
-           #{password},
-           #{enable}
-       )
-       ]]>
-    </insert>
+
+
+                SELECT
+                u.*,
+                r.id rid,
+                r.name rname,
+                r.description rdescription,
+                r.create_time rcreate_time,
+                r.create_id rcreate_id,
+                r.update_time rupdate_time,
+                r.update_id rupdate_id,
+                re.id reid,
+                re.name `rename`,
+                re.url reurl,
+                re.parent_id reparent_id,
+                re.description redescription,
+                re.create_time recreate_time,
+                re.create_id recreate_id,
+                re.update_time reupdate_time,
+                re.update_id reupdate_id
+                FROM
+                    `sys_user` u
+                LEFT JOIN sys_user_role ur ON ur.user_id = u.id
+                LEFT JOIN sys_role r ON r.id = ur.role_id
+                LEFT JOIN sys_role_resource rr ON rr.role_id = r.id
+                LEFT JOIN sys_resource re ON re.id = rr.resource_id
+
+
+        ]]>
+
+    </select>
+
 
 </mapper>
